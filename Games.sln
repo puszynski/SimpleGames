@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chat", "Chat\Chat.csproj", "{F73536B3-8C67-4596-8671-9866DC070CB3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicTacToe", "TicTacToe\TicTacToe.csproj", "{300ED4C5-CEF1-4200-B3B6-D432136FA1F6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArcadeHtml5Js", "ArcadeHtml5Js\ArcadeHtml5Js.csproj", "{CA735607-8A24-456D-AD69-AF4982019B9F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChatWalk-Html5JsSignalR", "ChatWalk-Html5JsSignalR\ChatWalk-Html5JsSignalR.csproj", "{43308632-96AB-426F-BD3A-286CC0BF184D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F73536B3-8C67-4596-8671-9866DC070CB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F73536B3-8C67-4596-8671-9866DC070CB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F73536B3-8C67-4596-8671-9866DC070CB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F73536B3-8C67-4596-8671-9866DC070CB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{300ED4C5-CEF1-4200-B3B6-D432136FA1F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{300ED4C5-CEF1-4200-B3B6-D432136FA1F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{300ED4C5-CEF1-4200-B3B6-D432136FA1F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{300ED4C5-CEF1-4200-B3B6-D432136FA1F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA735607-8A24-456D-AD69-AF4982019B9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA735607-8A24-456D-AD69-AF4982019B9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA735607-8A24-456D-AD69-AF4982019B9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA735607-8A24-456D-AD69-AF4982019B9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43308632-96AB-426F-BD3A-286CC0BF184D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43308632-96AB-426F-BD3A-286CC0BF184D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43308632-96AB-426F-BD3A-286CC0BF184D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43308632-96AB-426F-BD3A-286CC0BF184D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B7F9BACF-13DA-479A-87E9-B215315932D1}
+	EndGlobalSection
+EndGlobal
