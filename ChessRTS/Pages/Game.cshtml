@@ -1,0 +1,28 @@
+﻿@page
+@model ChessRTS.Pages.GameModel
+@{
+    ViewData["Title"] = "Game";
+}
+
+@Html.HiddenFor(x => x.Player.Nick, new { id = "myPlayer" })
+
+@*@Html.Hidden("some_property", Model.Player.Name, new { @id = "some_property" })*@
+
+
+
+<div class="text-center">
+    <h1 id="gameTitle" class="display-4">Not ready</h1>
+    <canvas id="gameCanvas" width="500" height="500"></canvas>
+</div>
+
+
+
+<div class="row">
+    <div class="col-6">
+        <ul id="messagesList"></ul>
+    </div>
+</div>
+
+@*<script src="~/js/signalr/dist/browser/signalr.js"></script>*@
+<script src="~/js/game.js"></script>
+

@@ -1,0 +1,5 @@
+﻿
+
+Future:
+- player - when logged - can customize its chess pieces - microPayments?
+- how to build player skill tree?
