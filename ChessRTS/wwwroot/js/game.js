@@ -3,7 +3,10 @@ var TILE_SIZE = 50;
 var TILE_PADDING = 5;
 var CANVAS;
 var CTX;
-var players = [];
+var MYPLAYER;
+var activeDragChessPiece;
+var ENEMYPLAYERS = [];
+var ACTUALMAP;
 var EChessPiece;
 (function (EChessPiece) {
     EChessPiece[EChessPiece["King"] = 1] = "King";
@@ -15,6 +18,7 @@ var EChessPiece;
 })(EChessPiece || (EChessPiece = {}));
 var ChessPiece = (function () {
     function ChessPiece(type, tileX, tileY) {
+        this.drag = false;
         this.Type = type;
         this.TileX = tileX;
         this.TileY = tileY;
@@ -28,15 +32,24 @@ var ChessPiece = (function () {
     ChessPiece.prototype.draw = function () {
         CTX.beginPath();
         CTX.fillStyle = "red";
-        CTX.fillRect(this.TileX * TILE_SIZE + TILE_PADDING, this.TileY * TILE_SIZE + TILE_PADDING, TILE_SIZE - 2 * TILE_PADDING, TILE_SIZE - 2 * TILE_PADDING);
+        if (this.drag === false) {
+            CTX.fillRect(this.TileX * TILE_SIZE + TILE_PADDING, this.TileY * TILE_SIZE + TILE_PADDING, TILE_SIZE - 2 * TILE_PADDING, TILE_SIZE - 2 * TILE_PADDING);
+        }
+        else if (this.drag === true) {
+            CTX.fillRect(this.dragHoldX - TILE_SIZE / 2, this.dragHoldY - TILE_SIZE / 2, TILE_SIZE - 2 * TILE_PADDING, TILE_SIZE - 2 * TILE_PADDING);
+        }
     };
     ChessPiece.prototype.validateMove = function (newTileX, newTileY) {
+        if (ACTUALMAP.Map[newTileX][newTileY] === 1) {
+            return false;
+        }
         switch (this.Type) {
             case EChessPiece.King:
-                if (false) {
+                if (Math.abs(this.TileX - newTileX) > 1 || Math.abs(this.TileY - newTileY) > 1) {
                     return false;
-                    console.warn("Wrong move!");
+                    console.warn("King - wrong move!");
                 }
+                return true;
                 break;
             case EChessPiece.Pawn:
                 return true;
@@ -98,36 +111,77 @@ var Map1 = [
     [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
     [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
     [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 1, 1, 0, 0, 0, 1],
+    [1, 0, 0, 0, 1, 1, 0, 0, 0, 1],
     [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
     [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
     [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 ];
 var Map1StartPositions = [[2, 2], [7, 7]];
-var TestMap01 = new MapModel('TestMap', Map1, 2, Map1StartPositions);
+ACTUALMAP = new MapModel('TestMap', Map1, 2, Map1StartPositions);
 function drawChessPieces() {
-    players.forEach(function (player) {
+    MYPLAYER.chessPieces.forEach(function (x) {
+        x.draw();
+    });
+    ENEMYPLAYERS.forEach(function (player) {
         player.chessPieces.forEach(function (chessPiece) {
             chessPiece.draw();
         });
     });
 }
+function isInChessPiece(chessPiece, mouseX, mouseY) {
+    var isInXAxis = (chessPiece.TileX * TILE_SIZE) < mouseX && (chessPiece.TileX * TILE_SIZE + TILE_SIZE) > mouseX;
+    var isInYAxis = (chessPiece.TileY * TILE_SIZE) < mouseY && (chessPiece.TileY * TILE_SIZE + TILE_SIZE) > mouseY;
+    return isInXAxis && isInYAxis;
+}
+function dragAndDropMouseDown(event) {
+    var myPlayerChessPieces = MYPLAYER.chessPieces;
+    var bRect = CANVAS.getBoundingClientRect();
+    var mouseX = (event.clientX - bRect.left);
+    var mouseY = (event.clientY - bRect.top);
+    for (var i = 0; i < myPlayerChessPieces.length; i++) {
+        if (isInChessPiece(myPlayerChessPieces[i], mouseX, mouseY)) {
+            myPlayerChessPieces[i].drag = true;
+            activeDragChessPiece = myPlayerChessPieces[i];
+        }
+    }
+}
+function dragAndDropMouseUp(event) {
+    if (activeDragChessPiece === null || activeDragChessPiece === undefined) {
+        return;
+    }
+    var bRect = CANVAS.getBoundingClientRect();
+    var mouseX = (event.clientX - bRect.left);
+    var mouseY = (event.clientY - bRect.top);
+    activeDragChessPiece.move(Math.ceil(mouseX / TILE_SIZE) - 1, Math.ceil(mouseY / TILE_SIZE) - 1);
+    activeDragChessPiece.drag = false;
+    activeDragChessPiece = null;
+}
+function dragAndDropMouseMove(event) {
+    if (activeDragChessPiece === null || activeDragChessPiece === undefined) {
+        return;
+    }
+    var bRect = CANVAS.getBoundingClientRect();
+    var mouseX = (event.clientX - bRect.left);
+    var mouseY = (event.clientY - bRect.top);
+    activeDragChessPiece.dragHoldX = mouseX;
+    activeDragChessPiece.dragHoldY = mouseY;
+}
 function gameLoop() {
     requestAnimationFrame(gameLoop);
     CTX.fillStyle = "black";
     CTX.fillRect(0, 0, CANVAS.width, CANVAS.height);
-    TestMap01.draw();
+    ACTUALMAP.draw();
     drawChessPieces();
 }
 window.onload = function () {
     CANVAS = document.getElementById('gameCanvas');
     CTX = CANVAS.getContext("2d");
-    var testPlayer = new Player('jpu', TestMap01.StartPositions[0][0], TestMap01.StartPositions[0][1]);
-    players.push(testPlayer);
+    MYPLAYER = new Player('jpu', ACTUALMAP.StartPositions[0][0], ACTUALMAP.StartPositions[0][1]);
     gameLoop();
+    CANVAS.addEventListener("mousedown", dragAndDropMouseDown, false);
+    CANVAS.addEventListener("mousemove", dragAndDropMouseMove, false);
+    CANVAS.addEventListener("mouseup", dragAndDropMouseUp, false);
 };
-function isInChessPiece() {
-}
 //# sourceMappingURL=game.js.map

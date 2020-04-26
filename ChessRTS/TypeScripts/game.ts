@@ -1,4 +1,4 @@
-﻿//todo all in one file - in future - try use project refrences https://www.typescriptlang.org/docs/handbook/project-references.html or import/export to split scripts
+﻿//todo - try use project refrences https://www.typescriptlang.org/docs/handbook/project-references.html or import/export to split scripts
 
 //CONSTANS GLOBAL SETTINGS
 const STARTING_BUILD_POINTS = 30;
@@ -8,7 +8,12 @@ const TILE_PADDING = 5;
 let CANVAS: HTMLCanvasElement;
 let CTX: CanvasRenderingContext2D
 
-let players: Player[] = [];
+let MYPLAYER: Player;
+let activeDragChessPiece: ChessPiece;
+
+let ENEMYPLAYERS: Player[] = [];
+
+let ACTUALMAP: MapModel;
 
 //CLASSES ENUMS INTERFACES
 enum EChessPiece {
@@ -25,9 +30,9 @@ class ChessPiece {
     public TileX: number; 
     public TileY: number;
 
-    //DRAGING LIVE
-    public dragX: number;
-    public dragY: number;
+    public drag = false;
+    public dragHoldX: number;
+    public dragHoldY: number;
 
     constructor(type: EChessPiece, tileX: number, tileY: number) {
         this.Type = type;
@@ -45,22 +50,40 @@ class ChessPiece {
     public draw(): void {
         CTX.beginPath();
         CTX.fillStyle = "red";
-        CTX.fillRect(
-            this.TileX * TILE_SIZE + TILE_PADDING,
-            this.TileY * TILE_SIZE + TILE_PADDING,
-            TILE_SIZE - 2 * TILE_PADDING,
-            TILE_SIZE - 2 * TILE_PADDING
-        );
+
+        if (this.drag === false) {
+            CTX.fillRect(
+                this.TileX * TILE_SIZE + TILE_PADDING,
+                this.TileY * TILE_SIZE + TILE_PADDING,
+                TILE_SIZE - 2 * TILE_PADDING,
+                TILE_SIZE - 2 * TILE_PADDING
+            );
+        }
+        else if (this.drag === true) {
+            CTX.fillRect(
+                this.dragHoldX - TILE_SIZE / 2,
+                this.dragHoldY - TILE_SIZE / 2,
+                TILE_SIZE - 2 * TILE_PADDING,
+                TILE_SIZE - 2 * TILE_PADDING
+            );
+        }        
     }
 
     private validateMove(newTileX: number, newTileY: number): boolean {
+
+        //Is field required to move
+        if (ACTUALMAP.Map[newTileX][newTileY] === 1) {
+            return false;
+        }
+
         switch (this.Type) {
             case EChessPiece.King:
                 // todo validate
-                if (false) {
+                if (Math.abs(this.TileX - newTileX) > 1 || Math.abs(this.TileY - newTileY) > 1) {
                     return false;
-                    console.warn("Wrong move!");
+                    console.warn("King - wrong move!");
                 }
+                return true;
                 break;
             case EChessPiece.Pawn:
                 //todo
@@ -136,27 +159,84 @@ const Map1 = [
     [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
     [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
     [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 0, 0, 1, 1, 0, 0, 0, 1],
+    [1, 0, 0, 0, 1, 1, 0, 0, 0, 1],
     [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
     [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
     [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 ]
 const Map1StartPositions = [[2, 2], [7, 7]];
-const TestMap01 = new MapModel('TestMap', Map1, 2, Map1StartPositions)
+ACTUALMAP = new MapModel('TestMap', Map1, 2, Map1StartPositions);
 
 
 
 
 //GAME FUNCTIONS ETC
 function drawChessPieces() {
+    //draw my player
+    MYPLAYER.chessPieces.forEach(function (x) {
+        x.draw();
+    });
 
-    players.forEach(function (player) {
+    //draw other players
+    ENEMYPLAYERS.forEach(function (player) {
         player.chessPieces.forEach(function (chessPiece) {
             chessPiece.draw();
         });
     });     
+}
+
+
+//DRAG AND DROP FUNCTIONS
+function isInChessPiece(chessPiece: ChessPiece, mouseX: number, mouseY: number): boolean {
+    var isInXAxis = (chessPiece.TileX * TILE_SIZE) < mouseX && (chessPiece.TileX * TILE_SIZE + TILE_SIZE) > mouseX;
+    var isInYAxis = (chessPiece.TileY * TILE_SIZE) < mouseY && (chessPiece.TileY * TILE_SIZE + TILE_SIZE) > mouseY;
+
+    return isInXAxis && isInYAxis;
+}
+
+function dragAndDropMouseDown(event) {
+    const myPlayerChessPieces = MYPLAYER.chessPieces;
+    let bRect = CANVAS.getBoundingClientRect();
+    let mouseX = (event.clientX - bRect.left);
+    let mouseY = (event.clientY - bRect.top);
+
+    //for each main player chessPieces
+    for (let i = 0; i < myPlayerChessPieces.length; i++) {
+        if (isInChessPiece(myPlayerChessPieces[i], mouseX, mouseY)) {
+            myPlayerChessPieces[i].drag = true;
+            activeDragChessPiece = myPlayerChessPieces[i];
+        }
+    }
+}
+
+function dragAndDropMouseUp(event) {
+    if (activeDragChessPiece === null || activeDragChessPiece === undefined) {
+        return;
+    }
+
+    let bRect = CANVAS.getBoundingClientRect();
+    let mouseX = (event.clientX - bRect.left);
+    let mouseY = (event.clientY - bRect.top);
+
+    activeDragChessPiece.move(Math.ceil(mouseX / TILE_SIZE) - 1, Math.ceil(mouseY / TILE_SIZE) - 1);    
+
+    activeDragChessPiece.drag = false;
+    activeDragChessPiece = null;
+}
+
+function dragAndDropMouseMove(event) {
+    if (activeDragChessPiece === null || activeDragChessPiece === undefined) {
+        return;
+    }
+
+    let bRect = CANVAS.getBoundingClientRect();
+    let mouseX = (event.clientX - bRect.left);
+    let mouseY = (event.clientY - bRect.top);
+
+    activeDragChessPiece.dragHoldX = mouseX;
+    activeDragChessPiece.dragHoldY = mouseY;
 }
 
 function gameLoop() {
@@ -167,12 +247,10 @@ function gameLoop() {
     CTX.fillRect(0, 0, CANVAS.width, CANVAS.height)
 
     //draw map
-    TestMap01.draw();    
+    ACTUALMAP.draw();    
 
     //draw chess pieces
     drawChessPieces();
-
-    //drag
 }
 
 //GAME START HERE
@@ -181,38 +259,15 @@ window.onload = () => {
     CTX = CANVAS.getContext("2d");
 
     //add test player
-    const testPlayer = new Player('jpu', TestMap01.StartPositions[0][0], TestMap01.StartPositions[0][1]);
-    players.push(testPlayer);
+    MYPLAYER = new Player('jpu', ACTUALMAP.StartPositions[0][0], ACTUALMAP.StartPositions[0][1]);
 
     gameLoop();
-}
 
-function isInChessPiece() {
-
-}
-
-function dragAndDrop(event) {
-    const chessPieceSize = TILE_SIZE - 2 * TILE_PADDING;
-    let bRect = CANVAS.getBoundingClientRect();
-    let mouseX = (event.clientX - bRect.left);
-    let mouseY = (event.clientY - bRect.top);
-
-    //for each chessPieces
-    for (let i = 0; i < chessPieceSize; i++) {
-        if (inChessPiece(circles[i], mouseX, mouseY)) {
-            drag = true;
-            dragHoldX = mouseX - circles[i].x;
-            dragHoldY = mouseY - circles[i].y;
-            dragIndex = i;
-        }
-    }
-    if (drag) {
-        window.addEventListener("mousemove", mouseMove, false);
-    }
-    CANVAS.removeEventListener("mousedown", mouseDown, false);
-    window.addEventListener("mouseup", mouseUp, false);
-    return false;
+    //drag events
+    CANVAS.addEventListener("mousedown", dragAndDropMouseDown, false);
+    CANVAS.addEventListener("mousemove", dragAndDropMouseMove, false);
+    CANVAS.addEventListener("mouseup", dragAndDropMouseUp, false);
 }
 
 
-CANVAS.addEventListener("mousedown", dragAndDrop, false);
+
