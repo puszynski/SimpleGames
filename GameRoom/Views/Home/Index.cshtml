@@ -1,0 +1,18 @@
+﻿@model GameRoom.ViewModels.Player
+@{
+    ViewData["Title"] = "Login Page";
+}
+
+    <div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        <p>You can play by with or without login. No stats will be saved by not logged players.</p>
+        <p>Beta version: login is not supported.</p>        
+
+        <form asp-controller="Player" asp-action="Create" method="post">
+            <div class="form-group">
+                <label asp-for="@Model.Nick" class="control-label"></label>
+                <input asp-for="@Model.Nick" class="form-control" />
+                <span asp-validation-for="@Model.Nick" class="text-danger"></span>
+            </div>
+        </form>
+    </div>

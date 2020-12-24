@@ -1,7 +1,9 @@
+//Constant values
 var TILE_SIZE = 50;
 var CANVAS;
 var CTX;
 var ACTUALMAP;
+//Data from server(in future)
 var MapTiles_1_40x40 = [
     [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
     [5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5],
@@ -44,18 +46,21 @@ var MapTiles_1_40x40 = [
     [5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5],
     [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]
 ];
+//Game Models, Enums
 var MapTileFunctions;
 (function (MapTileFunctions) {
+    //reachable
     MapTileFunctions[MapTileFunctions["Grass"] = 0] = "Grass";
     MapTileFunctions[MapTileFunctions["Path"] = 1] = "Path";
     MapTileFunctions[MapTileFunctions["Sand"] = 2] = "Sand";
     MapTileFunctions[MapTileFunctions["MudOrSwamp"] = 3] = "MudOrSwamp";
     MapTileFunctions[MapTileFunctions["ShallowWater"] = 4] = "ShallowWater";
+    //blocked
     MapTileFunctions[MapTileFunctions["DeepWater"] = 5] = "DeepWater";
     MapTileFunctions[MapTileFunctions["Stone"] = 6] = "Stone";
     MapTileFunctions[MapTileFunctions["Tree"] = 7] = "Tree";
 })(MapTileFunctions || (MapTileFunctions = {}));
-var Map = (function () {
+var Map = /** @class */ (function () {
     function Map(name, mapTiles) {
         this.Name = name;
         this.MapTiles = mapTiles;
@@ -83,13 +88,17 @@ var Map = (function () {
     };
     return Map;
 }());
+//Initialize codes, game functions
 ACTUALMAP = new Map('SquareEmtyMap', MapTiles_1_40x40);
 function gameLoop() {
     requestAnimationFrame(gameLoop);
+    //clear all by set black background
     CTX.fillStyle = "black";
     CTX.fillRect(0, 0, CANVAS.width, CANVAS.height);
+    //draw map
     ACTUALMAP.draw();
 }
+//GAME START HERE
 window.onload = function () {
     CANVAS = document.getElementById('gameCanvas');
     CTX = CANVAS.getContext("2d");
