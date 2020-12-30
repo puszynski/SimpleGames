@@ -1,5 +1,39 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
+﻿/* game 
+    --------------------------------------- */
+
+/*allows to specify global variables*/
+:root {
+    --pixel-size: 1px;
+    --grid-cell: calc( var(--pixel-size) * 16);
+}
+
+.camera {
+    width: calc( var(--pixel-size) * 160);
+    height: calc( var(--pixel-size) * 144);
+    overflow: hidden;
+    background: yellow;
+    position: relative;
+}
+
+.map {
+    image-rendering: pixelated;
+    background-image: url("https://assets.codepen.io/21542/CameraDemoMap.png");
+    background-size: 100%;
+    width: calc(13 * var(--grid-cell));
+    height: calc(10 * var(--grid-cell));
+    position: relative;
+}
+
+.character {
+    width: calc( var(--grid-cell) * 2);
+    height: calc( var(--grid-cell) * 2);
+    position: absolute;
+    overflow: hidden;
+}
+
+
+/*website
+    --------------------------------------- */
 
 a.navbar-brand {
   white-space: normal;

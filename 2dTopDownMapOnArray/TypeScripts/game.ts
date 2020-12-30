@@ -1,5 +1,5 @@
 ﻿//Constant values
-const TILE_SIZE = 50;
+const TILE_SIZE = 25;
 
 let CANVAS: HTMLCanvasElement;
 let CTX: CanvasRenderingContext2D;
@@ -90,16 +90,22 @@ class Map {
         }   
     }
 
-    private drowTile(x: number, y: number, tile: MapTileFunctions): void {
+    private drowTile(x: number, y: number, tile: number): void {
         CTX.beginPath();
 
         switch (tile) {
             case MapTileFunctions.DeepWater:
                 CTX.fillStyle = "blue";
+                break;
+
             case MapTileFunctions.Grass:
-                CTX.fillStyle = "green";
+                var radnomNumber = Math.random();
+                CTX.fillStyle = "green"; //todo randomize green colours to mimic grass
+                break;
+
             default:
                 CTX.fillStyle = "black";
+                break;
         }
 
         CTX.fillRect(x, y, TILE_SIZE, TILE_SIZE);

@@ -1,4 +1,4 @@
-var TILE_SIZE = 50;
+var TILE_SIZE = 25;
 var CANVAS;
 var CTX;
 var ACTUALMAP;
@@ -74,10 +74,14 @@ var Map = (function () {
         switch (tile) {
             case MapTileFunctions.DeepWater:
                 CTX.fillStyle = "blue";
+                break;
             case MapTileFunctions.Grass:
+                var radnomNumber = Math.random();
                 CTX.fillStyle = "green";
+                break;
             default:
                 CTX.fillStyle = "black";
+                break;
         }
         CTX.fillRect(x, y, TILE_SIZE, TILE_SIZE);
     };
