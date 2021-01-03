@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "2dTopDownMapOnArray", "2dTo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChessRTS", "ChessRTS\ChessRTS.csproj", "{6E4B5DAD-B87C-4BCD-A020-0AFF4820FE05}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameRoom", "GameRoom\GameRoom.csproj", "{D858DA8D-6B7D-418D-BCE6-1FD82A024216}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameRoom", "GameRoom\GameRoom.csproj", "{D858DA8D-6B7D-418D-BCE6-1FD82A024216}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2dTopDownGameWithImgMap", "2dTopDownGameWithImgMap\2dTopDownGameWithImgMap.csproj", "{0C198569-3A15-4876-A204-5C0ECBC19080}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{D858DA8D-6B7D-418D-BCE6-1FD82A024216}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D858DA8D-6B7D-418D-BCE6-1FD82A024216}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D858DA8D-6B7D-418D-BCE6-1FD82A024216}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C198569-3A15-4876-A204-5C0ECBC19080}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C198569-3A15-4876-A204-5C0ECBC19080}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C198569-3A15-4876-A204-5C0ECBC19080}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C198569-3A15-4876-A204-5C0ECBC19080}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

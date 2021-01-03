@@ -1,0 +1,20 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Game 01 Engine";
+}
+
+<div class="camera" id="camera">
+    <div class="map pixelArt" id="map" width="500" height="500">
+
+        <div class="character" id="character" facing="Down" walking="true">
+            <img class="characterShadow pixelArt" src="/images/DemoRpgCharacterShadow.png" alt="Shadow" />
+            <img class="characterSpritesheet pixelArt faceLeft" src="/images/DemoRpgCharacter.png" alt="Character" />
+        </div>
+
+        @*todo add others objects*@
+    </div>
+</div>
+
+
+<script src="~/js/game.js"></script>

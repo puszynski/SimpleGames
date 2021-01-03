@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>_2dTopDownGameWithImgMap</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="TypeScript\game.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="TypeScript\game.ts" />
+  </ItemGroup>
+
+</Project>

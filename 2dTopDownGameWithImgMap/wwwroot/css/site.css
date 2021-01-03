@@ -1,0 +1,186 @@
+﻿/* game 
+    --------------------------------------- */
+
+/*allows to specify global variables*/
+:root {
+    --pixel-size: 1px;
+    --grid-cell: calc( var(--pixel-size) * 16);
+}
+
+/*change pixel size depending content screen width*/
+@media(min-width: 1200px) {
+    :root {
+        --pixel-size: 2px;
+    }
+}
+@media(min-width: 2400px) {
+    :root {
+        --pixel-size: 3px;
+    }
+}
+@media(min-width: 3600px) {
+    :root {
+        --pixel-size: 4px;
+    }
+}
+
+.camera {
+    width: calc( var(--pixel-size) * 160);
+    height: calc( var(--pixel-size) * 144);
+    overflow: hidden;
+    background: yellow;
+    position: relative;
+}
+
+.map {
+    image-rendering: pixelated;
+    background-image: url("https://assets.codepen.io/21542/CameraDemoMap.png");
+    background-size: 100%;
+    width: calc(13 * var(--grid-cell)); /*depends on map size*/
+    height: calc(10 * var(--grid-cell)); /*depends on map size*/
+    position: relative;
+}
+
+.character {
+    width: calc( var(--grid-cell) * 2);
+    height: calc( var(--grid-cell) * 2);
+    overflow: hidden; /*hide image out of range*/
+    position: absolute;
+    margin: auto;
+}
+
+.characterSpritesheet {
+    width: calc( var(--grid-cell) * 4 * 2);
+    height: calc( var(--grid-cell) * 4 * 2);
+    position: absolute;
+}
+
+.characterShadow {
+    width: calc( var(--grid-cell) * 2);
+    height: calc( var(--grid-cell) * 2);
+    position: absolute;
+}
+
+.character[facing="Right"] .characterSpritesheet {
+    top: calc( var(--grid-cell) * -2);
+}
+
+.character[facing="Up"] .characterSpritesheet {
+    top: calc( var(--grid-cell) * -4);
+}
+
+.character[facing="Left"] .characterSpritesheet {
+    top: calc( var(--grid-cell) * -6);
+}
+
+.character[walking="true"] .characterSpritesheet {
+    animation: walkAnimation 0.5s steps(4) infinite; /* play animation each 1s, for loops, infinitie*/
+}
+
+/*.character[facing="Right"] .characterSpritesheet {
+    background-position-y: calc( var(--pixel-size) * -32 );
+}
+
+.character[facing="Up"] .characterSpritesheet {
+    background-position-y: calc( var(--pixel-size) * -64 );
+}
+
+.character[facing="Left"] .characterSpritesheet {
+    background-position-y: calc( var(--pixel-size) * -96 );
+}
+
+.character[walking="true"] .characterSpritesheet {
+    animation: walkAnimation 0.6s steps(4) infinite;
+}*/
+
+.pixelArt {
+    image-rendering: pixelated;
+}
+
+@keyframes walkAnimation {
+    from {
+        transform: translate3d(0px,0,0);
+    }
+
+    to {
+        transform: translate3d(-100%,0,0);
+    }
+}
+
+
+
+
+
+
+
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}
