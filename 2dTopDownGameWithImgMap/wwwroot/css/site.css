@@ -34,7 +34,7 @@
 
 .map {
     image-rendering: pixelated;
-    background-image: url("https://assets.codepen.io/21542/CameraDemoMap.png");
+    background-image:  url(../images/CameraDemoMap.png);
     background-size: 100%;
     width: calc(13 * var(--grid-cell)); /*depends on map size*/
     height: calc(10 * var(--grid-cell)); /*depends on map size*/
