@@ -1,0 +1,150 @@
+﻿GRAFIKA
+horror graphic? (like: noct, darkwood)
+mix t & d2 & dontStarve & rev & travian
+
+
+1 // days + nights => respect to night - more monsters, easy to die
+1 // 4 seasons(?)
+
+dystans - przytrzymanie potrzebne na skupienie i siłe, ale jak za długo to słabnie // male - potrzebne żeby nabrać siły
+// musi byc atrakcyjna offline - liniowe questy jak z d2 tylko w chuj ich dużo (+ onok jakieś poboczne )
+// poszczególne najce muszą być tak ustawione że od siebie zaleza finansowo/w walce, np mag moze prdukowac runy a reszta je uzwyac - bez współpracy nic nie osiągną więcej
+
+
+NACJE:
+	Szaman 
+		- żyje 100 lat => ale może wydłużać swoje życie za pomocą mikstru (im starszy tym większy kapitał pochłania)
+		- oszczep?? - może uderzać lub rzucać
+			- rzut bez skupiania (różnica do łucznika z łukiem, sama animacja rzutu), możesz mieć max 2-3 oszczepów, podnosi automatycznie ale musi podejść
+		- napoje(zamiast run)
+		- ładunki wybuchowe/pułapki - skupianie + wsp. niestabilności (gdy czar ma wys wsp przy wymawianiu czaru widzisz jakąś animacje, jak w złym momencie rzucisz to czar nie trafi lub np rani ciebie)
+		- postać lubi afk, potężne skille osiągasz nie przez exp a przez Inteligance - duża liczba godzin spędzona np na robieniu mikstur
+		- gdy przechodzi w stan medytacji zwieksza sie regeneracja many - przygotowac pod afk żeby tak nie obciążać serwera - wyjście ze stanu medytacji chwile trwa - trzeba uważać bo można takiego ubić PK
+			- najlepiej mana regeneruje sie w lasach - stad mieszka w lasch i sadzi drzewa
+		- na początku np pierwsze 30-100> użyć czar trzeba wpisywać go z ręki - potem przypisuje się pod skrót klawiszowy, stąd wiadomo kto jest amatorem
+		- szamani nie sa atakowani przez dziekie zwkerzenta
+		- dobrze radzi sobie z głodem (regeneruje Mane bez jedzenia?)
+		- lewitacja - pozwala zamiast biegać i konsumowac wytrzymalosc uzywac many lewitując - wysokie lvl`e
+		- zamiast many i pkt sould(tibia) => FreshHerbs/ProcessedHerbs => te 1 to takie pkt soul które regenerują sie jak druid porusza sie po lesie, ProccessedHerbs regenerują sie pod warunkiem że są jakieś FreshHerbs, z ProccesedHerbs robi się "czary"
+
+	Elfka 
+		- postać żeńska
+		- nieśmiertelność
+			- rozwija się 2x wolniej (lvl / skille) 
+			- powoli traci exp (lvl/skille) => brak aktywności gracza == powolny spadek lvl
+		- łuk: przytrzymanie PPM na skupienie, jak za długo to się rozkupia - animacja ułożenia łuku do strzału
+		- kusza: można dowolnie celować, bardzo silna ale ZAWSZE długo ładuje
+		- potrafią się skradać
+		- jedyna nacja zdolna polować na dziką zwierzynę - dostarczają cennej dziczyzny itp
+			- reszta postaci skazane na mało wydajne ZBIERACTWO
+
+	Wojownik
+		- wiek: żyje 100 lat => 1x365 dni => 400 dni (łatwiejszy przelicznik =>  dni / 4 = lata) 
+		- bardzo dynamicznie się rozwija
+		- przytrzymanie PPM, wzrost siły ciosu i celności, ale jak przesada to np zbyt silny i wolny? - animacja - jak przytrzymujesz PPM najpierw ustawia miecz z boku do lekkiego uderzenia później ustawia z góry na mocne
+		- dynamiczne poruszanie sie w przód i tył - jako uniki - i uderzanie tak zeby walka byla dosc dynamiczna zwłaszcza na PvP
+		- przyszłość - jak Revenant
+
+CYKL ŻYCIA + IMORTALITY RING:
+ - symboliczna podróż w kraine noobów w celu przekazania eq - sochowania gdzieś żeby kolejną postacią przejąć, ale kolejna nie ma tyle siły i jest jej cieżko korzystać z ekwipunku + łatwo ją zabić żeby ją przejać
+ - jak postać zginie z naturalnej śmierci => DUCH/SPIRIT przenosi się na następną postać - DUCH daje .... ? Nie ma jawnie pokazanych parametrow duszy - są ukryte pod maską - jedynie jest jakiś symbol przy ludku że jest np Jan Kowal II - 2 wcielenie czy coś..
+ - IMORTALITY ring 
+	- jeden na cały świat; 9 poprzednich graczy wyczuwa jaka postać ma aktualnie pierścień; 
+	- Jeśli posiadacz nie loguje się częściej niż X - pierścień wraca do jakiejś kryty skąd można go wziąć; 
+	- Nie dot. Elfów
+	- kto ma ring żyje wiecznie i może rozwijać kozacki lvl (ale utraci go jak przestanie grać regularnie)
+	- ten kto ma pierścień (+ game creator) ma do dyspozycji smoka - może nim błyskawicznie latać po całej mapie, smok siada i czeka w danym miejscu; 
+
+WYPOSAŻENIE:
+- ubrania nie tylko ochrona(armor) ale i ciepło/przewiewność na pustyni
+- plecak / kilka slotów na bronie - nie możesz np nieść 2 cieżkich zbroi w plecaku.. pomyśl
+
+BILANS GOLD/PRZEDMIOTY/TRADE
+- brak standardowych napojów życia/many kupnych u NPC
+- tylko szamani sprzedają "napoje" - jakie?
+- przedmioty zwykłe, unikalne, legendarne
+- jedzenie i wypoczynek podstawą regenereacj - lepsze mieszkanie skuteczniejsza regeneracja?
+- złoto ma dużą wartość, nie wypada z potworów lub rzadko - bardzo drogo jest coś kupić - pomyśl - żeby gotówka miała wartość jak w WOT
+- określona liczba unikalnych(legendarnych) przedmiotów na cały świat - np 1 legendarny miecz excalibur:
+	- super miecz - po osięgnięciu np 300 skilla miecza można wyjąć ze skały
+	- itp dla innych legendarnych przedmiotów
+- przedmioty legendarne nie mogą być przechowywane, tylko w ekwipunku - przejęcie takiego oręża przez PVP
+- przedmioty zużywają się (wszystkie) + wymyślić mechanizm żeby ludzie nie przetrzymywali nieużywanych oręży
+- brak klasycznej ksrzyni - nosisz przy sobie, chowasz w terenie lub chowasz w domu (później)
+
+GRYAWLNOŚĆ
+- questy liniowe jak w d2(w chuj dużo, kolejne wymagają wyższych lvl, inne współpracy w grupie - trzeba doskilować żeby iść dalej) + poboczne
+- questy wymuszają liniową wędrówke przez świat, np masz udać sie do nowego miasta, co trwa długo np kilkanaście godzin a po drodze są problemy/zagadki - zawsze możesz wrócić ale się nie opłaca 
+	- (gracze wysoko lvl`owi nie meiszają sie z nisko)!!! ważne żeby nie burzyć bilansu wartości gotówki/broni
+	- ograniczony ekwipunek - na graczu(realistyczny, nie da sie biegać z 3 mieczami i 3 zbrojami) i "w skrzyni"
+- przedmioty zwykłe, magiczne?, unikalne, zetsawy: każdy potwór wyrzuca to co ma, np jak walczy mieczem to go zostawia ale są to bardzo słabe przedmioty - czasami lepsze mają lepszą broń i zostaje
+- potwory tego samego typu mogą mieć lepszą gorszą broń i różny lvl - czuć że jak sie walczy z "goblinem" to trafiają się dużo lepsi, trzeba uważać
+- przy starciu możliwości obrony spadają orgomnie gdy więcej przeciwników, np o 50% dla każdego kolejnego
+- inny styl rozrywki dla postaci nisko lvl, średnio i wysoko
+- wymuszenie zmian lokalizacji/expowisk: 
+	- współczynnik expa dla poszczególnych potworów(niższy exp w miare zabijania potworów X) - wymusić zmiane lokalizacji (unikanie bezpiecznego expienia przez 30 lvl`i w tym samym miejscu) - jak? => 
+	- wyjątkowo wysoki wsp exp za zabicie 1 raz danego potwora(opłaca się polować na jakieś pojedyncze trudne potwory)
+	- zmiana lokalizacji potworów(?)
+- budowanie domów GILDI - musisz: 1. Kupic ziemie, 2. Projekt 3.Opłacać ludzi 4.Zadbać o bezpieczeństwo   
+	lub kupić gotowe mieszkanie
+- ENEVTY jak w WOT - z nagrodami np kasa premium
+
+MAPA PUSTYNNA
+- burze piaskowe
+
+POTWORY
+- te najtrudniejsze są mega szybkie, atakują z nienacka, jak nie pokonają to uciekają, aktywne szczególnie w nocy
+- w obrębe jednego gatunku zróżnicowane ego - niektóre łatwiej inne nie uciekną pod koniec, fajnie jaby zależało tez od szans (liczba potworów, jak bardzo obrywa gracz)
+- w obrębie jednego gatunku różne lvl - zdażaja sie kozaki które są znacznie mocniejsze, a zdarzaja sie jakieś ułomy
+
+LOGISTYKA/ŚWIAT
+- podróżowanie zajmuje olbrzymi czas - tak że jak chcesz iść z "europy" do "chin" to musisz poświęcić np. miesiące chodzenia
+- podróżowanie - gdy z buta - tylko za dnia - nocą wysokie ryzyko zgonu - miejscowości większe / mniejsze - bronią przed potworami
+- są też statki ale są mega drogie i jak sie an nich jest to tez plyniesz mega dlugo + szansa na śmierć z głodu/nietrafienie
+- respect to map - easy go to places where y can quickly die + avoid nights
+- można pływać ale mokre ciało sie wychładza i nie uda sie tobie daleko wypłynąć
+
+PREMIUM
+- waluta premium za którą można (gracze non premium mogą zdobyć je za ukonczone eventy)
+	-wykupywać miesięczny dostęp na wyspy premium 
+
+FABUŁA
+- są dwa pierścienei nieśmiertelności - jeden developera, drugi podarował światu
+
+ŚMIERĆ:
+- nie tracisz umiejętności + tracisz lvl, tracisz cały staff ?? (staff można odzyskać - zrobić tak zeby nikt nie byłw stanie wsyztkiego zabrać, np 1 zrobja na sobie i wsio)
+ 
+SILNIK
+- sinalR - wysyła tylko info o najbliższym otoczeniu - jak nie ma innych graczy, nie podaje ich danych;
+- jak będzie podział na serwer/front - ogranicz liczbe danych przesylanych do frontu (wszelkie obliczenia na serwerze async)
+
+
+RZCZYWISTOŚĆ
+- bronie wczesne srendiowiecze - https://calisia.pl/miecze-to-wymysl-rodem-z-hollywood-czym-walczono-w-sredniowieczu-warto-zajrzec-na-zawodzie,7167
+- walka oszczepem - https://www.youtube.com/watch?v=GBFKzAnt1kg
+- miecze to elita - tylko kilka dobrych mieczy na świat gry
+
+
+
+
+
+ELECTRON - pozwala uruchomić strone www(html,js,css) jako apka na kompie
+
+
+MARKETING:
+- musisz zrobić gdzieś na jakimś forum zajawke że robisz np. wykop.pl
+- pokaż gre jakimś znanym youtuberom np z tibi
+- wypuscić wczesna wersje - do wglądu - ciagle kontakt ze społęcnzości - feedback od ludzi - może wykop?
+- dynamiczne pomysły - słuchaj ludzi, ró kompromisy i zmieniaj kierunki
+- marketing / artykuły
+- korzystaj z assetów (pewnie ciężko w HTML) ale np unity używasz gotowej grafiki/symulacji "wody"
+- rób filmiki np jak robisz dźwięk do gry (nietypowy)
+- GDD - game documentation document - zaplanuj jakiś plan - co najpierw, co później/kiedy EarlyAccess - mozę patronate
+
+GDD:
+1. html/ts/css - opracować dodawanie wielu graczy (bez obsługi innych) + kolizje + różne spriteSheety + po najechaniu wyświtlamy dane (imie i nazwisko, lvl?, wiek)
+2. wykorzystanie serwera
+3. SinalR - multiplayer
+4. Budowa świata "Nooblandi"
+5. Koncept gry na fora
+6. EARLY ACCESS

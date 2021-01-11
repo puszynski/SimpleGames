@@ -6,10 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="TypeScript\draft.ts" />
     <None Remove="TypeScript\game.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="TypeScript\draft.ts" />
     <TypeScriptCompile Include="TypeScript\game.ts" />
   </ItemGroup>
 
