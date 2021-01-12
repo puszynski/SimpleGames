@@ -49,56 +49,88 @@ var Map = (function () {
     };
     return Map;
 }());
+var Dynamically_create_element = (function () {
+    function Dynamically_create_element() {
+    }
+    Dynamically_create_element.prototype.Create_Element = function (htmlelent) {
+        var element = document.createElement("input");
+        element.setAttribute("type", htmlelent);
+        element.setAttribute("value", htmlelent);
+        element.setAttribute("name", htmlelent);
+        element.setAttribute("style", "color:Red");
+        document.body.appendChild(element);
+    };
+    return Dynamically_create_element;
+}());
 var Player = (function () {
-    function Player(firstAndLastname, isMainPlayer, htmlElement, mapID, positionOnMap, speed, birthDate) {
+    function Player(firstAndLastname, isMainPlayer, mapID, positionOnMap, speed, birthDate, imageSrc) {
         this.ID = firstAndLastname;
         this.IsMainPlayer = isMainPlayer;
-        this.HTMLElement = htmlElement;
         this.MapID = mapID;
         this.PositionOnMap = positionOnMap;
         this.Speed = speed;
         this.BirthDate = birthDate;
+        this.ImageSrc = imageSrc;
         this.HeldDirections = [];
         this.calculateAge();
+        this.createPlayerHtmlCss();
     }
-    Player.prototype.createPlayerDiv = function () {
+    Player.prototype.createPlayerHtmlCss = function () {
+        this.HTMLElement = document.createElement("div");
+        this.HTMLElement.setAttribute("class", "character " + this.ID);
+        this.HTMLElement.setAttribute("id", "character " + this.ID);
+        this.HTMLElement.setAttribute("facing", "Down");
+        this.HTMLElement.setAttribute("walking", "false");
+        var shadowElement = document.createElement("img");
+        shadowElement.setAttribute("class", "characterShadow pixelArt");
+        shadowElement.setAttribute("src", "/images/DemoRpgCharacterShadow.png");
+        shadowElement.setAttribute("alt", "Shadow");
+        this.HTMLElement.appendChild(shadowElement);
+        var characterElement = document.createElement("img");
+        characterElement.setAttribute("class", "characterSpritesheet pixelArt");
+        characterElement.setAttribute("src", this.ImageSrc);
+        characterElement.setAttribute("alt", "Character");
+        this.HTMLElement.appendChild(characterElement);
+        MAP.HTMLElement.appendChild(this.HTMLElement);
     };
     Player.prototype.placeCharacterOnMap = function () {
-        var heldDirection = MAIN_PLAYER.HeldDirections[0];
-        if (heldDirection) {
-            switch (heldDirection) {
-                case EKeysDirections.Up: {
-                    if (IsNoColision(this.PositionOnMap.X, this.PositionOnMap.Y - this.Speed)) {
-                        this.PositionOnMap.Y -= this.Speed;
+        if (this.IsMainPlayer) {
+            var heldDirection = this.HeldDirections[0];
+            if (heldDirection) {
+                switch (heldDirection) {
+                    case EKeysDirections.Up: {
+                        if (IsNoColision(this.PositionOnMap.X, this.PositionOnMap.Y - this.Speed)) {
+                            this.PositionOnMap.Y -= this.Speed;
+                        }
+                        break;
                     }
-                    break;
-                }
-                case EKeysDirections.Down: {
-                    if (IsNoColision(this.PositionOnMap.X, this.PositionOnMap.Y + this.Speed)) {
-                        this.PositionOnMap.Y += this.Speed;
+                    case EKeysDirections.Down: {
+                        if (IsNoColision(this.PositionOnMap.X, this.PositionOnMap.Y + this.Speed)) {
+                            this.PositionOnMap.Y += this.Speed;
+                        }
+                        break;
                     }
-                    break;
-                }
-                case EKeysDirections.Left: {
-                    if (IsNoColision(this.PositionOnMap.X - this.Speed, this.PositionOnMap.Y)) {
-                        this.PositionOnMap.X -= this.Speed;
+                    case EKeysDirections.Left: {
+                        if (IsNoColision(this.PositionOnMap.X - this.Speed, this.PositionOnMap.Y)) {
+                            this.PositionOnMap.X -= this.Speed;
+                        }
+                        break;
                     }
-                    break;
-                }
-                case EKeysDirections.Right: {
-                    if (IsNoColision(this.PositionOnMap.X + this.Speed, this.PositionOnMap.Y)) {
-                        this.PositionOnMap.X += this.Speed;
+                    case EKeysDirections.Right: {
+                        if (IsNoColision(this.PositionOnMap.X + this.Speed, this.PositionOnMap.Y)) {
+                            this.PositionOnMap.X += this.Speed;
+                        }
+                        break;
                     }
-                    break;
+                    default: {
+                        break;
+                    }
                 }
-                default: {
-                    break;
-                }
+                this.HTMLElement.setAttribute("facing", EKeysDirections[heldDirection]);
             }
-            this.HTMLElement.setAttribute("facing", EKeysDirections[heldDirection]);
+            this.HTMLElement.setAttribute("walking", heldDirection ? "true" : "false");
         }
-        this.HTMLElement.setAttribute("walking", heldDirection ? "true" : "false");
-        this.HTMLElement.style.transform = "translate3d( " + (MAIN_PLAYER.PositionOnMap.X - TILE_SIZE) * pixelSize + "px, " + (MAIN_PLAYER.PositionOnMap.Y - TILE_SIZE) * pixelSize + "px, 0 )";
+        this.HTMLElement.style.transform = "translate3d( " + (this.PositionOnMap.X - TILE_SIZE) * pixelSize + "px, " + (this.PositionOnMap.Y - TILE_SIZE) * pixelSize + "px, 0 )";
     };
     Player.prototype.calculateAge = function () {
         if (!this.IsInactive) {
@@ -106,13 +138,12 @@ var Player = (function () {
             var durationInMilisecounds = now.valueOf() - this.BirthDate.valueOf();
             var milisecoundsInOneDay = 1000 * 60 * 60 * 24;
             var days = Math.round(durationInMilisecounds / milisecoundsInOneDay);
-            var age = days / 4;
-            if (this.CharacterClass != ECharacterClasses.Shaman && age >= 100) {
+            var age = Math.floor(days / 4);
+            if (this.CharacterClass != ECharacterClasses.Elf && age >= 100) {
                 this.IsInactive = EPlayerInactiveReason.NaturalDeath;
             }
-            return age;
+            this.Age = age;
         }
-        return null;
     };
     return Player;
 }());
@@ -160,7 +191,8 @@ function InitializeGameData() {
     ];
     MAP = new Map("demo", document.getElementById("map"), demoMapTiles, new Position(6.5 * TILE_SIZE, 3.5 * TILE_SIZE));
     CAMERA = new Camera(160, 144);
-    MAIN_PLAYER = new Player("World Creator", true, document.getElementById("character"), MAP.ID, MAP.PlayerStartPositionPx, 1, new Date(2020, 12, 25));
+    MAIN_PLAYER = new Player("World Creator", true, MAP.ID, MAP.PlayerStartPositionPx, 1, new Date("2020-12-25"), "/images/DemoRpgCharacter.png");
+    OTHER_PLAYERS = [new Player("Tester Pierwszy", false, MAP.ID, new Position(3.5 * TILE_SIZE, 3.5 * TILE_SIZE), 1, new Date("2020-12-25"), "/images/DemoRpgCharacter2.png")];
 }
 function UpdateGameData() {
     pixelSize = parseInt(getComputedStyle(document.documentElement).getPropertyValue("--pixel-size"));
@@ -168,6 +200,9 @@ function UpdateGameData() {
 function gameLoop() {
     UpdateGameData();
     MAIN_PLAYER.placeCharacterOnMap();
+    OTHER_PLAYERS.forEach(function (item) {
+        item.placeCharacterOnMap();
+    });
     CAMERA.updateCameraPosition();
     window.requestAnimationFrame(function () {
         gameLoop();

@@ -11,11 +11,24 @@ dystans - przytrzymanie potrzebne na skupienie i siłe, ale jak za długo to sł
 // poszczególne najce muszą być tak ustawione że od siebie zaleza finansowo/w walce, np mag moze prdukowac runy a reszta je uzwyac - bez współpracy nic nie osiągną więcej
 
 
-NACJE:
-	Szaman 
-		- żyje 100 lat => ale może wydłużać swoje życie za pomocą mikstru (im starszy tym większy kapitał pochłania)
-		- oszczep?? - może uderzać lub rzucać
-			- rzut bez skupiania (różnica do łucznika z łukiem, sama animacja rzutu), możesz mieć max 2-3 oszczepów, podnosi automatycznie ale musi podejść
+
+NACJE
+
+ATRYBUT			SZAMAN									ELFKA									WOJOWNIK
+wiek			70-100 lat* + "nekromacja"				nieśmiertelna							70-100 lat*					*losujemy max wiek przy tworzeniu postaci, nie jawne
+broń			oszczepy? bomby? pułapki?				łuk/kusza								bezpośredniego zwarcia
+rozwój/exp		1x										0.5x									2x
+regeneracja hp	mało je									je normalnie							je bardzo dużo i często
+
+system walki	oszczep: prosty rzut/uderzenie z		łuk: skupia po chwili, rozkupia			siła uderzenia/szybkość zależne od dł
+				minimalnym skupianiem 					się przy za dlugim celowaniu			przytrzymania
+				czary/bomby: wsp. niestabilności		kusza: strzela po krótkim 				q e r f do walki różnymi ciosami + combosy
+														przycelowaniu, bardzo długo ładuje
+														bardzo wysokie obrażenia
+
+
+
+	Szaman 		
 		- napoje(zamiast run)
 		- ładunki wybuchowe/pułapki - skupianie + wsp. niestabilności (gdy czar ma wys wsp przy wymawianiu czaru widzisz jakąś animacje, jak w złym momencie rzucisz to czar nie trafi lub np rani ciebie)
 		- postać lubi afk, potężne skille osiągasz nie przez exp a przez Inteligance - duża liczba godzin spędzona np na robieniu mikstur
@@ -23,54 +36,65 @@ NACJE:
 			- najlepiej mana regeneruje sie w lasach - stad mieszka w lasch i sadzi drzewa
 		- na początku np pierwsze 30-100> użyć czar trzeba wpisywać go z ręki - potem przypisuje się pod skrót klawiszowy, stąd wiadomo kto jest amatorem
 		- szamani nie sa atakowani przez dziekie zwkerzenta
-		- dobrze radzi sobie z głodem (regeneruje Mane bez jedzenia?)
 		- lewitacja - pozwala zamiast biegać i konsumowac wytrzymalosc uzywac many lewitując - wysokie lvl`e
 		- zamiast many i pkt sould(tibia) => FreshHerbs/ProcessedHerbs => te 1 to takie pkt soul które regenerują sie jak druid porusza sie po lesie, ProccessedHerbs regenerują sie pod warunkiem że są jakieś FreshHerbs, z ProccesedHerbs robi się "czary"
 
 	Elfka 
-		- postać żeńska
 		- nieśmiertelność
 			- rozwija się 2x wolniej (lvl / skille) 
 			- powoli traci exp (lvl/skille) => brak aktywności gracza == powolny spadek lvl
-		- łuk: przytrzymanie PPM na skupienie, jak za długo to się rozkupia - animacja ułożenia łuku do strzału
-		- kusza: można dowolnie celować, bardzo silna ale ZAWSZE długo ładuje
 		- potrafią się skradać
 		- jedyna nacja zdolna polować na dziką zwierzynę - dostarczają cennej dziczyzny itp
 			- reszta postaci skazane na mało wydajne ZBIERACTWO
+		- jedzenie == regeneracja - potrzebuje średnio jedzenia
 
 	Wojownik
-		- wiek: żyje 100 lat => 1x365 dni => 400 dni (łatwiejszy przelicznik =>  dni / 4 = lata) 
-		- bardzo dynamicznie się rozwija
-		- przytrzymanie PPM, wzrost siły ciosu i celności, ale jak przesada to np zbyt silny i wolny? - animacja - jak przytrzymujesz PPM najpierw ustawia miecz z boku do lekkiego uderzenia później ustawia z góry na mocne
+		- animacja - jak przytrzymujesz PPM najpierw ustawia miecz z boku do lekkiego uderzenia później ustawia z góry na mocne
 		- dynamiczne poruszanie sie w przód i tył - jako uniki - i uderzanie tak zeby walka byla dosc dynamiczna zwłaszcza na PvP
-		- przyszłość - jak Revenant
+
+	Pomysł (czy na pewno? chyba to nie jest dobry pomysł ze wzgl na ekonomie gry) => Różne podejście do złota
+		- druid ma wyjebane bo jego moc jest z wiedzy i przyrody, nie z przedmiotów (tylko po co by miał wtedy sprzedawać mikstury?)
+		- Elf koncentruje się na sprzęcie - dużo znaczy
+		- wojownik na początku nie potrzebuje mocno inwestować, dopiero na wyższych lvl`ach jak pojawiają się miecze - są ultradrogie
+
+STEROWANIE
+- wasd + myszka + skróty q e r f
+- podwójne wasd - odskok/unik w danym kierunku
+- gdy celujesz(PPM) to wolniej sie poruszasz - urozmaici rozgrywke
+- z sziftem krótka szarża - ale tylko raz na jakiś czas i zrobić tak żeby nie oplacało się z tym normalnie przemieszczać
+- auto-aim ? działa ale gorzej, nie trafia zawsze etc
 
 CYKL ŻYCIA + IMORTALITY RING:
- - symboliczna podróż w kraine noobów w celu przekazania eq - sochowania gdzieś żeby kolejną postacią przejąć, ale kolejna nie ma tyle siły i jest jej cieżko korzystać z ekwipunku + łatwo ją zabić żeby ją przejać
  - jak postać zginie z naturalnej śmierci => DUCH/SPIRIT przenosi się na następną postać - DUCH daje .... ? Nie ma jawnie pokazanych parametrow duszy - są ukryte pod maską - jedynie jest jakiś symbol przy ludku że jest np Jan Kowal II - 2 wcielenie czy coś..
+ - naturalna śmierć nastepuje w różnym wieku => musisz jakoś pokazać wcześniej (ale dość randomowo) że postać umiera, np zmniejszać jej prędkość?
  - IMORTALITY ring 
-	- jeden na cały świat; 9 poprzednich graczy wyczuwa jaka postać ma aktualnie pierścień; 
+	- dwa na jeden na cały świat; 
+		- pierścień ubóstwa => wymaga skromności(??) ale nikt nie wie że go masz - ma go game creator (ale to jest tajemnicą)
+		- pierścień władzy 9 poprzednich graczy wyczuwa jaka postać ma aktualnie pierścień - toczy sie walka o niego - trzeba zabić żeby przejąć; 
 	- Jeśli posiadacz nie loguje się częściej niż X - pierścień wraca do jakiejś kryty skąd można go wziąć; 
 	- Nie dot. Elfów
-	- kto ma ring żyje wiecznie i może rozwijać kozacki lvl (ale utraci go jak przestanie grać regularnie)
+	- kto ma ring żyje wiecznie i może rozwijać kozacki lvl 
+	- pierścień traci sie za nieaktywną gre (??) 
 	- ten kto ma pierścień (+ game creator) ma do dyspozycji smoka - może nim błyskawicznie latać po całej mapie, smok siada i czeka w danym miejscu; 
+ - symboliczna podróż w kraine noobów w celu przekazania eq - sochowania gdzieś żeby kolejną postacią przejąć, ale kolejna nie ma tyle siły i jest jej cieżko korzystać z ekwipunku + łatwo ją zabić żeby ją przejać
 
 WYPOSAŻENIE:
 - ubrania nie tylko ochrona(armor) ale i ciepło/przewiewność na pustyni
 - plecak / kilka slotów na bronie - nie możesz np nieść 2 cieżkich zbroi w plecaku.. pomyśl
 
 BILANS GOLD/PRZEDMIOTY/TRADE
+- złoto ma dużą wartość, nie wypada z potworów lub rzadko - bardzo drogo jest coś kupić - pomyśl - żeby gotówka miała wartość jak w WOT
 - brak standardowych napojów życia/many kupnych u NPC
 - tylko szamani sprzedają "napoje" - jakie?
 - przedmioty zwykłe, unikalne, legendarne
 - jedzenie i wypoczynek podstawą regenereacj - lepsze mieszkanie skuteczniejsza regeneracja?
-- złoto ma dużą wartość, nie wypada z potworów lub rzadko - bardzo drogo jest coś kupić - pomyśl - żeby gotówka miała wartość jak w WOT
 - określona liczba unikalnych(legendarnych) przedmiotów na cały świat - np 1 legendarny miecz excalibur:
 	- super miecz - po osięgnięciu np 300 skilla miecza można wyjąć ze skały
 	- itp dla innych legendarnych przedmiotów
 - przedmioty legendarne nie mogą być przechowywane, tylko w ekwipunku - przejęcie takiego oręża przez PVP
-- przedmioty zużywają się (wszystkie) + wymyślić mechanizm żeby ludzie nie przetrzymywali nieużywanych oręży
-- brak klasycznej ksrzyni - nosisz przy sobie, chowasz w terenie lub chowasz w domu (później)
+- przedmioty zużywają się (wszystkie) za wyjątkiem unikalnych/legendarnych + wymyślić mechanizm żeby ludzie nie przetrzymywali nieużywanych oręży
+- brak klasycznej skrzyni - nosisz przy sobie, chowasz w terenie lub chowasz w domu (później)
+- rynek / giełda - 
 
 GRYAWLNOŚĆ
 - questy liniowe jak w d2(w chuj dużo, kolejne wymagają wyższych lvl, inne współpracy w grupie - trzeba doskilować żeby iść dalej) + poboczne
@@ -88,6 +112,7 @@ GRYAWLNOŚĆ
 - budowanie domów GILDI - musisz: 1. Kupic ziemie, 2. Projekt 3.Opłacać ludzi 4.Zadbać o bezpieczeństwo   
 	lub kupić gotowe mieszkanie
 - ENEVTY jak w WOT - z nagrodami np kasa premium
+- randomowe najazdy np amazonek na tereny podmiejskie (afk zginą)
 
 MAPA PUSTYNNA
 - burze piaskowe
@@ -111,7 +136,10 @@ PREMIUM
 FABUŁA
 - są dwa pierścienei nieśmiertelności - jeden developera, drugi podarował światu
 
-ŚMIERĆ:
+FABUŁA - AKT 1 - boonland
+
+
+ŚMIERĆ (w walce):
 - nie tracisz umiejętności + tracisz lvl, tracisz cały staff ?? (staff można odzyskać - zrobić tak zeby nikt nie byłw stanie wsyztkiego zabrać, np 1 zrobja na sobie i wsio)
  
 SILNIK

@@ -58,6 +58,7 @@ class Map {
     MapTiles: number[][];
     PlayerStartPositionPx: Position;
     //MapItemTiles: [][]; todo
+
     
     constructor(mapName: string,
         htmlElement: HTMLElement,
@@ -67,7 +68,7 @@ class Map {
         this.ID = mapName;
         this.HTMLElement = htmlElement;
         this.MapTiles = mapTiles; //todo in future - get from server
-        this.PlayerStartPositionPx = playerStartPositionPx;
+        this.PlayerStartPositionPx = playerStartPositionPx;        
 
         this.calculateMapSize();
     }
@@ -78,12 +79,25 @@ class Map {
     }   
 }
 
+class Dynamically_create_element {
+    htmlelent: HTMLElement;
+    Create_Element(htmlelent) {
+        var element = document.createElement("input");
+        //Assign different attributes to the element.  
+        element.setAttribute("type", htmlelent);
+        element.setAttribute("value", htmlelent);
+        element.setAttribute("name", htmlelent);
+        element.setAttribute("style", "color:Red");
+        document.body.appendChild(element);
+    }
+} 
+
 class Player {
-    ID: string; //first name + last name
+    ID: string;
     IsMainPlayer: boolean;
 
     HTMLElement: HTMLElement;
-    ImageSrc: string; //todo // character tile size 32 x 32px
+    ImageSrc: string;
 
     MapID: string;
     PositionOnMap: Position;
@@ -98,72 +112,101 @@ class Player {
 
     constructor(firstAndLastname: string,
         isMainPlayer: boolean,
-        htmlElement: HTMLElement,
         mapID: string,
         positionOnMap: Position,
         speed: number,
-        birthDate: Date)
+        birthDate: Date,
+        imageSrc: string)
     {
         this.ID = firstAndLastname;
         this.IsMainPlayer = isMainPlayer;
-        this.HTMLElement = htmlElement;
         this.MapID = mapID;
         this.PositionOnMap = positionOnMap;
         this.Speed = speed;
         this.BirthDate = birthDate;
+        this.ImageSrc = imageSrc;
 
         this.HeldDirections = [];
         this.calculateAge();
+
+        this.createPlayerHtmlCss();
     }
 
-    createPlayerDiv() {
-        //TODO
+
+    createPlayerHtmlCss() {  
+        //main div
+        this.HTMLElement = document.createElement("div");
+        this.HTMLElement.setAttribute("class", `character ${this.ID}`);
+        this.HTMLElement.setAttribute("id", `character ${this.ID}`);
+        this.HTMLElement.setAttribute("facing", "Down");
+        this.HTMLElement.setAttribute("walking", "false");
+
+        //shadow
+        var shadowElement = document.createElement("img");
+        shadowElement.setAttribute("class", "characterShadow pixelArt");
+        shadowElement.setAttribute("src", "/images/DemoRpgCharacterShadow.png");
+        shadowElement.setAttribute("alt", "Shadow");
+        this.HTMLElement.appendChild(shadowElement);
+
+        //character sprite
+        var characterElement = document.createElement("img");
+        characterElement.setAttribute("class", "characterSpritesheet pixelArt");
+        characterElement.setAttribute("src", this.ImageSrc);
+        characterElement.setAttribute("alt", "Character");
+        this.HTMLElement.appendChild(characterElement);
+
+        //append main div inside map div
+        MAP.HTMLElement.appendChild(this.HTMLElement);  
     }
+
+
 
     placeCharacterOnMap() {
-        var heldDirection = MAIN_PLAYER.HeldDirections[0]; //allow player to press multiple keys, we are reading first one e.g. if player will press and hold Left+Right, then relase Left, Right will still work
 
-        if (heldDirection) {
-            switch (heldDirection) {
-                case EKeysDirections.Up: {
-                    if (IsNoColision(this.PositionOnMap.X, this.PositionOnMap.Y - this.Speed)) {
-                        this.PositionOnMap.Y -= this.Speed;
+        if (this.IsMainPlayer) {
+            var heldDirection = this.HeldDirections[0]; //allow player to press multiple keys, we are reading first one e.g. if player will press and hold Left+Right, then relase Left, Right will still work
+
+            if (heldDirection) {
+                switch (heldDirection) {
+                    case EKeysDirections.Up: {
+                        if (IsNoColision(this.PositionOnMap.X, this.PositionOnMap.Y - this.Speed)) {
+                            this.PositionOnMap.Y -= this.Speed;
+                        }
+                        break;
                     }
-                    break;
-                }
-                case EKeysDirections.Down: {
-                    if (IsNoColision(this.PositionOnMap.X, this.PositionOnMap.Y + this.Speed)) {
-                        this.PositionOnMap.Y += this.Speed;
+                    case EKeysDirections.Down: {
+                        if (IsNoColision(this.PositionOnMap.X, this.PositionOnMap.Y + this.Speed)) {
+                            this.PositionOnMap.Y += this.Speed;
+                        }
+                        break;
                     }
-                    break;
-                }
-                case EKeysDirections.Left: {
-                    if (IsNoColision(this.PositionOnMap.X - this.Speed, this.PositionOnMap.Y)) {
-                        this.PositionOnMap.X -= this.Speed;
+                    case EKeysDirections.Left: {
+                        if (IsNoColision(this.PositionOnMap.X - this.Speed, this.PositionOnMap.Y)) {
+                            this.PositionOnMap.X -= this.Speed;
+                        }
+                        break;
                     }
-                    break;
-                }
-                case EKeysDirections.Right: {
-                    if (IsNoColision(this.PositionOnMap.X + this.Speed, this.PositionOnMap.Y)) {
-                        this.PositionOnMap.X += this.Speed;
+                    case EKeysDirections.Right: {
+                        if (IsNoColision(this.PositionOnMap.X + this.Speed, this.PositionOnMap.Y)) {
+                            this.PositionOnMap.X += this.Speed;
+                        }
+                        break;
                     }
-                    break;
+                    default: {
+                        break;
+                    }
                 }
-                default: {
-                    break;
-                }
+
+                this.HTMLElement.setAttribute("facing", EKeysDirections[heldDirection]);
             }
 
-            this.HTMLElement.setAttribute("facing", EKeysDirections[heldDirection]);
-        }
+            this.HTMLElement.setAttribute("walking", heldDirection ? "true" : "false");
+        }        
 
-        this.HTMLElement.setAttribute("walking", heldDirection ? "true" : "false");
-
-        this.HTMLElement.style.transform = `translate3d( ${(MAIN_PLAYER.PositionOnMap.X - TILE_SIZE) * pixelSize}px, ${(MAIN_PLAYER.PositionOnMap.Y - TILE_SIZE) * pixelSize}px, 0 )`; //"- TILE_SIZE" becouse of character 32*32 sprite
-        
+        this.HTMLElement.style.transform = `translate3d( ${(this.PositionOnMap.X - TILE_SIZE) * pixelSize}px, ${(this.PositionOnMap.Y - TILE_SIZE) * pixelSize}px, 0 )`; //"- TILE_SIZE" becouse of character 32*32 sprite
     }
 
-    calculateAge(): number {
+    calculateAge() {
         if (!this.IsInactive) { //TODO SPR - powinno wejść jak nie jest puste/null
             var now = new Date();
             var durationInMilisecounds = now.valueOf() - this.BirthDate.valueOf();
@@ -171,16 +214,14 @@ class Player {
             var milisecoundsInOneDay = 1000 * 60 * 60 * 24;
             var days = Math.round( durationInMilisecounds / milisecoundsInOneDay);
 
-            var age = days / 4;  // 400 days == 100 years in game
+            var age = Math.floor(days / 4);  // 400 days == 100 years in game
 
-            if (this.CharacterClass != ECharacterClasses.Shaman && age >= 100) {
+            if (this.CharacterClass != ECharacterClasses.Elf && age >= 100) {
                 this.IsInactive = EPlayerInactiveReason.NaturalDeath;
             }
 
-            return age;
+            this.Age = age;
         }
-
-        return null;
     }
 }
 
@@ -239,17 +280,26 @@ function InitializeGameData() {
     MAP = new Map("demo",
                   document.getElementById("map"),
                   demoMapTiles,
-        new Position(6.5 * TILE_SIZE, 3.5 * TILE_SIZE));
+        new Position(6.5 * TILE_SIZE, 3.5 * TILE_SIZE),
+    );
 
     CAMERA = new Camera(160, 144);
 
     MAIN_PLAYER = new Player("World Creator",
                              true,
-                             document.getElementById("character"),
                              MAP.ID,
                              MAP.PlayerStartPositionPx,
                              1,
-                             new Date(2020, 12, 25));
+                             new Date("2020-12-25"),
+                             "/images/DemoRpgCharacter.png");
+
+    OTHER_PLAYERS = [new Player("Tester Pierwszy",
+                                false,
+                                MAP.ID,
+                                new Position(3.5 * TILE_SIZE, 3.5 * TILE_SIZE),
+                                1,
+                                new Date("2020-12-25"),
+                                "/images/DemoRpgCharacter2.png")];
 }
 
 function UpdateGameData() {
@@ -258,7 +308,15 @@ function UpdateGameData() {
 
 function gameLoop() {
     UpdateGameData();
+
+    //todo - rysować chronologicznie po osi Y - żeby ci z przodu przysłaniali tych z tyłu // z SERWERA WRZUCAĆ POSEGREGOWANĄ LISTE ROSNĄCO PO POSITION.X
     MAIN_PLAYER.placeCharacterOnMap();
+   
+
+    OTHER_PLAYERS.forEach(function (item) {
+        item.placeCharacterOnMap();
+    }); 
+
     CAMERA.updateCameraPosition();
 
     window.requestAnimationFrame(() => {
