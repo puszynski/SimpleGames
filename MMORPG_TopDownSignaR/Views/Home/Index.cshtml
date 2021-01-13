@@ -1,0 +1,30 @@
+﻿@model MMORPG_TopDownSignaR.Models.Home.Login
+
+@{
+    ViewData["Title"] = "Login page";
+}
+
+    <div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+        <p>Play as guest, type nick:</p>
+
+
+        <div class="jumbotron">
+            <form asp-controller="Home" asp-action="Index" method="post">
+                <div class="form-group">
+                    <label asp-for="nameof(@Model.FirstName)" class="control-label"></label>
+                    <textarea rows="5" asp-for="nameof(@Model.FirstName)" class="form-control"></textarea>
+                    <span asp-validation-for="nameof(@Model.FirstName)" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="nameof(@Model.LastName)" class="control-label"></label>
+                    <input asp-for="nameof(@Model.LastName)" class="form-control" />
+                    <span asp-validation-for="nameof(@Model.LastName)" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                <input type="submit" value="Submit changes" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </form>
+        </div>
+
+    </div>

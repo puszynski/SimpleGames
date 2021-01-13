@@ -38,6 +38,8 @@ system walki	oszczep: prosty rzut/uderzenie z		łuk: skupia po chwili, rozkupia	
 		- szamani nie sa atakowani przez dziekie zwkerzenta
 		- lewitacja - pozwala zamiast biegać i konsumowac wytrzymalosc uzywac many lewitując - wysokie lvl`e
 		- zamiast many i pkt sould(tibia) => FreshHerbs/ProcessedHerbs => te 1 to takie pkt soul które regenerują sie jak druid porusza sie po lesie, ProccessedHerbs regenerują sie pod warunkiem że są jakieś FreshHerbs, z ProccesedHerbs robi się "czary"
+		- może wytwarza runy? runy jak z diablo - socetuje je sie w przedmiotach, powstają słowa runnicze
+		- ładunku wybuchowe/czary - mają swój zasięg - jedne mają duży splasz, inne są bardziej skoncetrowane ale trafione zadają więcej dmg - czar chwile leci więc im dalej tym trudniej - maja rozne prędkości lotu
 
 	Elfka 
 		- nieśmiertelność
@@ -81,6 +83,7 @@ CYKL ŻYCIA + IMORTALITY RING:
 WYPOSAŻENIE:
 - ubrania nie tylko ochrona(armor) ale i ciepło/przewiewność na pustyni
 - plecak / kilka slotów na bronie - nie możesz np nieść 2 cieżkich zbroi w plecaku.. pomyśl
+- wyposażenie survivalowe - piłka / toporek żeby ciąć drewno na opał, rozpałka, koc / tarp / namiot, etc => biwakowa w terenie / w domu - potrzeben do regeneracji
 
 BILANS GOLD/PRZEDMIOTY/TRADE
 - złoto ma dużą wartość, nie wypada z potworów lub rzadko - bardzo drogo jest coś kupić - pomyśl - żeby gotówka miała wartość jak w WOT
@@ -113,6 +116,11 @@ GRYAWLNOŚĆ
 	lub kupić gotowe mieszkanie
 - ENEVTY jak w WOT - z nagrodami np kasa premium
 - randomowe najazdy np amazonek na tereny podmiejskie (afk zginą)
+- dużo potworów - jakw  tibi - nie widzisz życia obrażeń - dowiadujesz sie o mocy stworzenia dopiero w walce + randomowe lvl konretnego getunku potwora - wyższy lvl to jakiś mały znacznik w jego wyglądzie (np lepsza tarcza etc)
+- brak ograniczenia lvl`u - questy w pewnych momentach wymagaja lvl lub skillu
+- rozmawiasz z npc
+- NIE DLA PRZEWAGI ZA KASE
+
 
 MAPA PUSTYNNA
 - burze piaskowe
@@ -151,7 +159,7 @@ RZCZYWISTOŚĆ
 - bronie wczesne srendiowiecze - https://calisia.pl/miecze-to-wymysl-rodem-z-hollywood-czym-walczono-w-sredniowieczu-warto-zajrzec-na-zawodzie,7167
 - walka oszczepem - https://www.youtube.com/watch?v=GBFKzAnt1kg
 - miecze to elita - tylko kilka dobrych mieczy na świat gry
-
+- wynalezienie prochu => Rzecz miała miejsce około IX wieku i jak w wielu wypadkach odkrycia dokonano przypadkowo. Źródła donoszą, że stoją za nim mnisi-alchemicy, próbujący stworzyć miksturę zapewniającą życie wieczne, połączyli drzewny węgiel, siarkę i saletrę. Niewiele więcej wiadomo o okolicznościach, można się natomiast domyślać, że we właściwościach tej mieszanki zorientowano się z wielkim hukiem. 
 
 
 
@@ -170,8 +178,8 @@ MARKETING:
 - GDD - game documentation document - zaplanuj jakiś plan - co najpierw, co później/kiedy EarlyAccess - mozę patronate
 
 GDD:
-1. html/ts/css - opracować dodawanie wielu graczy (bez obsługi innych) + kolizje + różne spriteSheety + po najechaniu wyświtlamy dane (imie i nazwisko, lvl?, wiek)
-2. wykorzystanie serwera
+1. html/ts/css - opracować dodawanie wielu graczy (bez obsługi innych)  + różne spriteSheety - ZROBIONE
+2. wykorzystanie serwera => później => + kolizje + po najechaniu wyświtlamy dane (imie i nazwisko, lvl?, wiek)
 3. SinalR - multiplayer
 4. Budowa świata "Nooblandi"
 5. Koncept gry na fora
