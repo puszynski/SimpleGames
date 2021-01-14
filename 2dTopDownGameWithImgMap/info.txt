@@ -83,6 +83,8 @@ CYKL ŻYCIA + IMORTALITY RING:
 WYPOSAŻENIE:
 - ubrania nie tylko ochrona(armor) ale i ciepło/przewiewność na pustyni
 - plecak / kilka slotów na bronie - nie możesz np nieść 2 cieżkich zbroi w plecaku.. pomyśl
+	- ograniczeni wagowe (wpływa na szybkość poruszania się)
+	- objętość "worka" - tam luźno umieszczamy rzeczy tak żeby nie było kolizji (bez systemu kratek)
 - wyposażenie survivalowe - piłka / toporek żeby ciąć drewno na opał, rozpałka, koc / tarp / namiot, etc => biwakowa w terenie / w domu - potrzeben do regeneracji
 
 BILANS GOLD/PRZEDMIOTY/TRADE

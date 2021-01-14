@@ -12,9 +12,20 @@ namespace MMORPG_TopDownSignaR.Logic.PlayerCharacter
             return days/4;  // 400 days == 100 years in game
         }
 
-        public EPlayerStatus SetPlayerStatus(int age, int ageOfDeath)
+        public int? CalculateDeathAge(ECharacterClass characterClass, bool isGameCreator = false)
         {
-            if (ageOfDeath != null && age >= ageOfDeath)
+            //todo in future - check after class promotion
+
+            if (characterClass == ECharacterClass.Elf || isGameCreator)
+                return null;
+
+            var rnd = new Random();
+            return rnd.Next(90, 101); //90-100
+        }
+
+        public EPlayerStatus SetPlayerStatus(int age, int? ageOfDeath)
+        {
+            if (ageOfDeath.HasValue && age >= ageOfDeath)
                 return EPlayerStatus.NaturalDeath;
 
             return EPlayerStatus.Active;
