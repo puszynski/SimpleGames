@@ -19,8 +19,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameRoom", "GameRoom\GameRo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "2dTopDownGameWithImgMap", "2dTopDownGameWithImgMap\2dTopDownGameWithImgMap.csproj", "{0C198569-3A15-4876-A204-5C0ECBC19080}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MMORPG_TopDownSignaR", "MMORPG_TopDownSignaR\MMORPG_TopDownSignaR.csproj", "{8E26FF25-4F90-49B9-AD06-5B94E5F5F958}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,10 +57,6 @@ Global
 		{0C198569-3A15-4876-A204-5C0ECBC19080}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C198569-3A15-4876-A204-5C0ECBC19080}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C198569-3A15-4876-A204-5C0ECBC19080}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8E26FF25-4F90-49B9-AD06-5B94E5F5F958}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8E26FF25-4F90-49B9-AD06-5B94E5F5F958}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8E26FF25-4F90-49B9-AD06-5B94E5F5F958}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8E26FF25-4F90-49B9-AD06-5B94E5F5F958}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
